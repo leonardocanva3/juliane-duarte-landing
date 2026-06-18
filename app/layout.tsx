@@ -1,14 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { SeoJsonLd } from "@/app/components/seo-json-ld";
 import {
-  HERO_IMAGE,
   OG_IMAGE_ALT,
+  OPEN_GRAPH_IMAGE,
   SEO_DESCRIPTION,
   SEO_KEYWORDS,
   SEO_SOCIAL_DESCRIPTION,
   SEO_TITLE,
   SITE_NAME,
   SITE_URL,
+  TWITTER_IMAGE,
 } from "@/app/lib/seo";
 import "./globals.css";
 
@@ -28,6 +29,11 @@ export const metadata: Metadata = {
   category: "saúde mental",
   alternates: {
     canonical: "/",
+  },
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
   },
   robots: {
     index: true,
@@ -49,7 +55,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: HERO_IMAGE,
+        url: OPEN_GRAPH_IMAGE,
         width: 1200,
         height: 630,
         alt: OG_IMAGE_ALT,
@@ -62,7 +68,7 @@ export const metadata: Metadata = {
     description: SEO_SOCIAL_DESCRIPTION,
     images: [
       {
-        url: HERO_IMAGE,
+        url: TWITTER_IMAGE,
         alt: OG_IMAGE_ALT,
       },
     ],

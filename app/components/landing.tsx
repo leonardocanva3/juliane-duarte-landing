@@ -67,6 +67,24 @@ function WhatsAppIcon({ className = "size-5" }: { className?: string }) {
   );
 }
 
+function InstagramIcon({ className = "size-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
+        rx="5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <circle cx="12" cy="12" r="4.1" stroke="currentColor" strokeWidth="1.8" />
+      <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
+    </svg>
+  );
+}
+
 function CTAButton({
   children,
   variant = "primary",
@@ -669,6 +687,15 @@ function FinalCTA() {
             <CTAButton variant="outlineLight" href="#quem-sou" wide>
               Rever formação
             </CTAButton>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-16 w-full items-center justify-center gap-3 rounded-full border border-[#E8B7C7]/55 bg-white/5 px-8 text-base font-black text-white transition duration-300 hover:-translate-y-0.5 hover:border-[#E8B7C7] hover:bg-white/12 sm:min-h-18 sm:w-auto sm:px-10 sm:text-lg"
+            >
+              <InstagramIcon className="size-6 text-[#E8B7C7]" />
+              Me siga no Instagram
+            </a>
           </div>
         </div>
       </div>
