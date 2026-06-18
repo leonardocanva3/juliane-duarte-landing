@@ -680,20 +680,29 @@ function FinalCTA() {
               </a>
             </p>
           </div>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <CTAButton variant="light" wide>
-              Agendar atendimento pelo WhatsApp
-            </CTAButton>
-            <CTAButton variant="outlineLight" href="#quem-sou" wide>
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-3">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-14 w-full items-center justify-center gap-2.5 rounded-full bg-white px-6 text-sm font-black text-[#18384A] shadow-[0_18px_34px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#F7EEE9] sm:w-auto sm:px-7 sm:text-base"
+            >
+              <WhatsAppIcon className="size-5 text-[#21C063]" />
+              Agendar pelo WhatsApp
+            </a>
+            <a
+              href="#quem-sou"
+              className="inline-flex h-14 w-full items-center justify-center rounded-full border border-white/30 bg-white/8 px-6 text-sm font-black text-white transition duration-300 hover:-translate-y-0.5 hover:bg-white/14 sm:w-auto sm:px-7 sm:text-base"
+            >
               Rever formação
-            </CTAButton>
+            </a>
             <a
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-16 w-full items-center justify-center gap-3 rounded-full border border-[#E8B7C7]/55 bg-white/5 px-8 text-base font-black text-white transition duration-300 hover:-translate-y-0.5 hover:border-[#E8B7C7] hover:bg-white/12 sm:min-h-18 sm:w-auto sm:px-10 sm:text-lg"
+              className="inline-flex h-14 w-full items-center justify-center gap-2.5 rounded-full border border-[#E8B7C7]/55 bg-white/5 px-6 text-sm font-black text-white transition duration-300 hover:-translate-y-0.5 hover:border-[#E8B7C7] hover:bg-white/12 sm:w-auto sm:px-7 sm:text-base"
             >
-              <InstagramIcon className="size-6 text-[#E8B7C7]" />
+              <InstagramIcon className="size-5 text-[#E8B7C7]" />
               Me siga no Instagram
             </a>
           </div>
@@ -729,7 +738,7 @@ function FloatingWhatsApp() {
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className="whatsapp-pulse fixed bottom-6 right-5 z-50 inline-flex size-24 items-center justify-center rounded-full bg-white text-[#21C063] shadow-[0_28px_70px_rgba(24,56,74,0.34)] ring-1 ring-[#18384A]/10 transition duration-300 hover:-translate-y-1 hover:scale-105 sm:bottom-7 sm:right-7 sm:h-32 sm:w-36 sm:flex-col sm:gap-1 sm:rounded-[32px]"
+      className="whatsapp-pulse fixed bottom-6 right-5 z-50 inline-flex size-24 items-center justify-center rounded-full bg-white text-[#21C063] shadow-[0_28px_70px_rgba(24,56,74,0.34)] ring-1 ring-[#18384A]/10 transition duration-300 hover:-translate-y-1 hover:scale-105 sm:bottom-8 sm:right-8 sm:h-28 sm:w-32 sm:flex-col sm:gap-1 sm:rounded-[30px]"
       aria-label="Agendar atendimento pelo WhatsApp"
     >
       <WhatsAppIcon className="size-12 sm:size-11" />
