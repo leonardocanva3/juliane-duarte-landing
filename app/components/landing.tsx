@@ -109,7 +109,7 @@ function CTAButton({
 
   return (
     <a
-      className={`inline-flex min-h-16 items-center justify-center gap-3.5 rounded-full px-8 text-base font-black tracking-[0.01em] transition duration-300 sm:min-h-18 sm:px-10 sm:text-lg ${
+      className={`inline-flex min-h-14 items-center justify-center gap-2.5 rounded-full px-6 text-sm font-black tracking-[0.01em] transition duration-300 sm:min-h-16 sm:gap-3.5 sm:px-8 sm:text-base lg:px-10 lg:text-lg ${
         wide ? "w-full sm:w-auto" : ""
       } ${classes[variant]}`}
       href={href}
@@ -117,7 +117,7 @@ function CTAButton({
       rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
     >
       {variant !== "secondary" && variant !== "outlineLight" ? (
-        <WhatsAppIcon className="size-6 text-[#21C063]" />
+        <WhatsAppIcon className="size-5 text-[#21C063] sm:size-6" />
       ) : null}
       {children}
     </a>
@@ -140,14 +140,14 @@ function SectionIntro({
   return (
     <div className={`${align === "center" ? "mx-auto text-center" : ""} max-w-4xl`}>
       <div
-        className={`text-sm font-extrabold uppercase tracking-[0.26em] ${
+        className={`text-xs font-extrabold uppercase tracking-[0.18em] sm:text-sm sm:tracking-[0.26em] ${
           light ? "text-[#E8B7C7]" : "text-[#C9A46A]"
         }`}
       >
         {eyebrow}
       </div>
       <h2
-        className={`mt-5 text-4xl font-black leading-[1.04] sm:text-5xl lg:text-6xl ${
+        className={`mt-4 text-3xl font-black leading-[1.08] sm:mt-5 sm:text-5xl lg:text-6xl ${
           light ? "text-white" : "text-[#18384A]"
         }`}
       >
@@ -155,7 +155,7 @@ function SectionIntro({
       </h2>
       {text ? (
         <p
-          className={`mt-7 text-lg leading-9 sm:text-xl sm:leading-10 ${
+          className={`mt-5 text-base leading-8 sm:mt-7 sm:text-xl sm:leading-10 ${
             light ? "text-white/80" : "text-[#34404A]/82"
           }`}
         >
@@ -199,35 +199,43 @@ function FramedImage({
 function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#18384A]/8 bg-white/90 backdrop-blur-2xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <a href="#inicio" className="flex items-center gap-3">
-          <span className="relative grid size-14 place-items-center overflow-hidden rounded-full bg-[#F7EEE9] ring-1 ring-[#E8B7C7]/60">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6 lg:px-8">
+        <a href="#inicio" className="flex min-w-0 items-center gap-2.5 sm:gap-3">
+          <span className="relative grid size-11 shrink-0 place-items-center overflow-hidden rounded-full bg-[#F7EEE9] ring-1 ring-[#E8B7C7]/60 sm:size-14">
             <Image
               src="/images/juliane/juliane-logo.png"
               alt="Logotipo Juliane Duarte Psicóloga"
               width={112}
               height={84}
-              className="w-12 object-contain"
+              className="w-9 object-contain sm:w-12"
               priority
             />
           </span>
-          <span className="leading-tight">
-            <span className="block text-base font-black text-[#18384A]">
+          <span className="min-w-0 leading-tight">
+            <span className="block truncate text-sm font-black text-[#18384A] sm:text-base">
               Juliane Duarte
             </span>
-            <span className="block text-xs font-semibold uppercase tracking-[0.24em] text-[#34404A]/62">
+            <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-[#34404A]/62 sm:text-xs sm:tracking-[0.24em]">
               Psicóloga
             </span>
           </span>
         </a>
-        <nav className="hidden items-center gap-6 text-base font-semibold text-[#34404A]/76 lg:flex">
+        <nav className="hidden items-center gap-3 text-sm font-semibold text-[#34404A]/76 lg:flex xl:gap-6 xl:text-base">
           {navItems.map(([label, href]) => (
             <a key={href} href={href} className="transition hover:text-[#18384A]">
               {label}
             </a>
           ))}
         </nav>
-        <CTAButton>WhatsApp</CTAButton>
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-[#18384A] px-4 text-xs font-black text-white shadow-[0_14px_30px_rgba(24,56,74,0.20)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#102d3d] sm:h-12 sm:px-5 sm:text-sm"
+        >
+          <WhatsAppIcon className="size-4 text-[#21C063] sm:size-5" />
+          WhatsApp
+        </a>
       </div>
     </header>
   );
@@ -237,37 +245,37 @@ function Hero() {
   return (
     <section
       id="inicio"
-      className="relative isolate min-h-screen overflow-hidden bg-[#F7EEE9] pt-24"
+      className="relative isolate overflow-hidden bg-[#F7EEE9] pt-20 sm:pt-24"
     >
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_18%,rgba(232,183,199,0.52),transparent_30%),linear-gradient(125deg,#ffffff_0%,#F7EEE9_46%,#dfeaec_100%)]" />
       <div className="absolute left-0 top-32 -z-10 h-px w-1/2 bg-[#C9A46A]/55" />
-      <div className="mx-auto grid min-h-[calc(100vh-96px)] max-w-7xl items-center gap-12 px-4 py-12 sm:px-6 lg:grid-cols-[0.98fr_1.02fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl items-center gap-9 px-4 py-9 sm:min-h-[calc(100vh-96px)] sm:gap-12 sm:px-6 sm:py-12 lg:grid-cols-[0.98fr_1.02fr] lg:px-8">
         <div className="animate-rise">
-          <div className="text-sm font-extrabold uppercase tracking-[0.28em] text-[#C9A46A]">
+          <div className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#C9A46A] sm:text-sm sm:tracking-[0.28em]">
             Psicologia online com técnica e acolhimento
           </div>
-          <h1 className="mt-6 max-w-4xl text-5xl font-black leading-[0.96] text-[#18384A] sm:text-7xl lg:text-8xl">
+          <h1 className="mt-5 max-w-4xl text-4xl font-black leading-[1.02] text-[#18384A] sm:mt-6 sm:text-7xl sm:leading-[0.96] lg:text-8xl">
             Juliane Duarte
-            <span className="mt-5 block text-3xl font-semibold leading-tight text-[#34404A] sm:text-5xl">
+            <span className="mt-3 block text-2xl font-semibold leading-tight text-[#34404A] sm:mt-5 sm:text-5xl">
               Psicóloga para cuidar da sua saúde mental com profundidade.
             </span>
           </h1>
-          <p className="mt-8 max-w-2xl text-xl leading-10 text-[#34404A]/86 sm:text-2xl sm:leading-[1.65]">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#34404A]/86 sm:mt-8 sm:text-2xl sm:leading-[1.65]">
             Cuidando da saúde mental com técnica, sensibilidade e respeito à
             sua história.
           </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
             <CTAButton wide>Agendar atendimento pelo WhatsApp</CTAButton>
             <CTAButton href="#quem-sou" variant="secondary" wide>
               Conheça meu trabalho
             </CTAButton>
           </div>
-          <div className="mt-12 grid gap-4 sm:grid-cols-3">
+          <div className="mt-8 grid gap-3 sm:mt-12 sm:grid-cols-3 sm:gap-4">
             {["Atendimento online", "Baseada em evidências", "Sigilo profissional"].map(
               (seal) => (
                 <div
                   key={seal}
-                  className="rounded-[8px] border border-white/80 bg-white/72 p-5 text-base font-bold text-[#18384A] shadow-[0_18px_45px_rgba(24,56,74,0.08)] backdrop-blur"
+                  className="rounded-[8px] border border-white/80 bg-white/72 p-4 text-sm font-bold text-[#18384A] shadow-[0_18px_45px_rgba(24,56,74,0.08)] backdrop-blur sm:p-5 sm:text-base"
                 >
                   {seal}
                 </div>
@@ -275,23 +283,23 @@ function Hero() {
             )}
           </div>
         </div>
-        <div className="relative min-h-[620px] w-full animate-rise delay-100 md:min-h-[700px] lg:min-h-[760px]">
-          <div className="absolute inset-x-8 bottom-0 top-8 rounded-t-[160px] rounded-b-[8px] bg-[#18384A]" />
-          <div className="relative z-10 min-h-[560px] w-full overflow-hidden rounded-t-[170px] rounded-b-[8px] border-[12px] border-white shadow-[0_36px_90px_rgba(24,56,74,0.28)] md:min-h-[680px] lg:min-h-[760px]">
+        <div className="relative min-h-[500px] w-full animate-rise delay-100 md:min-h-[700px] lg:min-h-[760px]">
+          <div className="absolute inset-x-5 bottom-0 top-6 rounded-t-[96px] rounded-b-[8px] bg-[#18384A] sm:inset-x-8 sm:top-8 sm:rounded-t-[160px]" />
+          <div className="relative z-10 min-h-[470px] w-full overflow-hidden rounded-t-[104px] rounded-b-[8px] border-[8px] border-white shadow-[0_36px_90px_rgba(24,56,74,0.28)] sm:border-[12px] md:min-h-[680px] md:rounded-t-[170px] lg:min-h-[760px]">
             <Image
               src="/images/juliane/juliane-hero.jpg"
               alt="Juliane Duarte Psicóloga em atendimento psicológico online"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 48vw"
-              className="object-cover object-top"
+              className="object-cover object-[50%_10%] sm:object-top"
             />
           </div>
-          <div className="absolute bottom-0 left-3 right-3 rounded-[8px] border border-white/70 bg-white/92 p-6 shadow-[0_24px_60px_rgba(24,56,74,0.18)] backdrop-blur sm:left-10 sm:right-auto sm:max-w-sm">
-            <div className="text-sm font-extrabold uppercase tracking-[0.22em] text-[#C9A46A]">
+          <div className="absolute bottom-0 left-3 right-3 rounded-[8px] border border-white/70 bg-white/92 p-4 shadow-[0_24px_60px_rgba(24,56,74,0.18)] backdrop-blur sm:left-10 sm:right-auto sm:max-w-sm sm:p-6">
+            <div className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#C9A46A] sm:text-sm sm:tracking-[0.22em]">
               Cuidado estruturado
             </div>
-            <p className="mt-3 text-lg leading-8 text-[#34404A]">
+            <p className="mt-2 text-base leading-7 text-[#34404A] sm:mt-3 sm:text-lg sm:leading-8">
               Escuta clínica, acolhimento e intervenções baseadas em evidências.
             </p>
           </div>
@@ -308,7 +316,7 @@ function Authority() {
         {authority.map((item) => (
           <div
             key={item}
-            className="rounded-[8px] border border-white/12 bg-white/[0.07] p-6 text-center text-lg font-bold leading-7 text-white shadow-[0_18px_42px_rgba(0,0,0,0.12)]"
+            className="rounded-[8px] border border-white/12 bg-white/[0.07] p-5 text-center text-base font-bold leading-7 text-white shadow-[0_18px_42px_rgba(0,0,0,0.12)] sm:p-6 sm:text-lg"
           >
             {item}
           </div>
@@ -333,14 +341,14 @@ function CTASection({
     <section className={dark ? "bg-[#18384A] py-10" : "bg-white py-10"}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
-          className={`grid items-center gap-6 rounded-[8px] p-7 shadow-[0_24px_70px_rgba(24,56,74,0.12)] lg:grid-cols-[1fr_auto] lg:p-9 ${
+          className={`grid items-center gap-6 rounded-[8px] p-5 shadow-[0_24px_70px_rgba(24,56,74,0.12)] sm:p-7 lg:grid-cols-[1fr_auto] lg:p-9 ${
             dark
               ? "border border-white/14 bg-white/[0.06] text-white"
               : "border border-[#E8B7C7]/45 bg-[#F7EEE9] text-[#18384A]"
           }`}
         >
           <div>
-            <h2 className="text-3xl font-black leading-tight sm:text-4xl">
+            <h2 className="text-2xl font-black leading-tight sm:text-4xl">
               {title}
             </h2>
             <p
@@ -362,12 +370,12 @@ function CTASection({
 
 function Experience() {
   return (
-    <section id="experiencia" className="bg-white py-24 sm:py-32">
+    <section id="experiencia" className="bg-white py-20 sm:py-32">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:px-8">
         <FramedImage
           src="/images/juliane/juliane-biblioteca-1.jpg"
           alt="Psicóloga Juliane Duarte especialista em Neuropsicologia Clínica"
-          className="h-[520px] rounded-[8px] shadow-[0_30px_80px_rgba(24,56,74,0.18)] lg:h-[640px]"
+          className="h-[420px] rounded-[8px] shadow-[0_30px_80px_rgba(24,56,74,0.18)] sm:h-[520px] lg:h-[640px]"
           objectPosition="50% 45%"
         />
         <div>
@@ -376,7 +384,7 @@ function Experience() {
             title="Atendimento psicológico com base em evidências e direção clínica."
             align="left"
           />
-          <p className="mt-8 text-xl leading-10 text-[#34404A]/84 sm:text-2xl sm:leading-[1.65]">
+          <p className="mt-6 text-lg leading-9 text-[#34404A]/84 sm:mt-8 sm:text-2xl sm:leading-[1.65]">
             Atendimento psicológico com base em evidências para auxiliar no
             enfrentamento da ansiedade, depressão, dependência química,
             conflitos emocionais e questões relacionadas aos relacionamentos e à
@@ -393,29 +401,29 @@ function Experience() {
 
 function Differentials() {
   return (
-    <section className="relative overflow-hidden bg-[#F7EEE9] py-24 sm:py-32">
+    <section className="relative overflow-hidden bg-[#F7EEE9] py-20 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionIntro
           eyebrow="Diferenciais"
           title="Uma experiência de cuidado segura, ética e acolhedora."
           text="A psicoterapia precisa ser técnica, mas também humana. Cada detalhe do atendimento foi pensado para oferecer clareza, privacidade e confiança."
         />
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:mt-14 lg:grid-cols-3 lg:gap-6">
           {differentials.map((item, index) => (
             <article
               key={item.title}
-              className="rounded-[8px] border border-white/80 bg-white p-8 shadow-[0_26px_70px_rgba(24,56,74,0.10)] lg:min-h-[360px]"
+              className="rounded-[8px] border border-white/80 bg-white p-6 shadow-[0_26px_70px_rgba(24,56,74,0.10)] sm:p-8 lg:min-h-[360px]"
             >
               <div className="flex items-center justify-between">
-                <span className="text-6xl font-black leading-none text-[#E8B7C7]">
+                <span className="text-5xl font-black leading-none text-[#E8B7C7] sm:text-6xl">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span className="h-px w-20 bg-[#C9A46A]/60" />
               </div>
-              <h3 className="mt-8 text-3xl font-black leading-tight text-[#18384A]">
+              <h3 className="mt-6 text-2xl font-black leading-tight text-[#18384A] sm:mt-8 sm:text-3xl">
                 {item.title}
               </h3>
-              <p className="mt-5 text-lg leading-9 text-[#34404A]/82">
+              <p className="mt-4 text-base leading-8 text-[#34404A]/82 sm:mt-5 sm:text-lg sm:leading-9">
                 {item.text}
               </p>
             </article>
@@ -436,48 +444,48 @@ function About() {
   ];
 
   return (
-    <section id="quem-sou" className="bg-white py-24 sm:py-32">
-      <div className="mx-auto grid max-w-7xl gap-16 px-4 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
+    <section id="quem-sou" className="bg-white py-20 sm:py-32">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:gap-16 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8">
         <div>
           <SectionIntro
             eyebrow="Quem sou"
             title="Formação sólida para acolher histórias complexas com respeito."
             align="left"
           />
-          <div className="mt-9 space-y-6 text-lg leading-9 text-[#34404A]/84 sm:text-xl sm:leading-10">
+          <div className="mt-7 space-y-5 text-base leading-8 text-[#34404A]/84 sm:mt-9 sm:space-y-6 sm:text-xl sm:leading-10">
             {paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
         </div>
         <div className="relative flex flex-col">
-          <div className="absolute -inset-5 rounded-[8px] bg-[#F7EEE9]" />
+          <div className="absolute -inset-3 rounded-[8px] bg-[#F7EEE9] sm:-inset-5" />
           <FramedImage
             src="/images/juliane/juliane-dsm.png"
             alt="Psicóloga com formação em Terapia Cognitivo-Comportamental e Psicopatologia"
-            className="relative h-[620px] rounded-t-[120px] rounded-b-[8px] shadow-[0_34px_90px_rgba(24,56,74,0.22)] lg:h-[680px]"
+            className="relative h-[500px] rounded-t-[88px] rounded-b-[8px] shadow-[0_34px_90px_rgba(24,56,74,0.22)] sm:h-[620px] sm:rounded-t-[120px] lg:h-[680px]"
             objectPosition="50% 35%"
           />
-          <div className="relative -mt-10 mx-3 rounded-[8px] border border-white/16 bg-[#18384A] p-7 text-white shadow-[0_28px_70px_rgba(24,56,74,0.28)] sm:mx-8 sm:p-8">
-            <div className="text-sm font-extrabold uppercase tracking-[0.24em] text-[#E8B7C7]">
+          <div className="relative -mt-8 mx-2 rounded-[8px] border border-white/16 bg-[#18384A] p-5 text-white shadow-[0_28px_70px_rgba(24,56,74,0.28)] sm:-mt-10 sm:mx-8 sm:p-8">
+            <div className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#E8B7C7] sm:text-sm sm:tracking-[0.24em]">
               ATENDIMENTO BASEADO EM EVIDÊNCIAS
             </div>
-            <div className="mt-6 grid gap-7 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            <div className="mt-5 grid gap-6 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               <div>
-                <h3 className="text-2xl font-black leading-tight text-white">
+                <h3 className="text-xl font-black leading-tight text-white sm:text-2xl">
                   Especializações:
                 </h3>
-                <ul className="mt-4 space-y-3 text-lg leading-7 text-white/84">
+                <ul className="mt-3 space-y-2.5 text-base leading-7 text-white/84 sm:mt-4 sm:space-y-3 sm:text-lg">
                   <li>Neuropsicologia Clínica</li>
                   <li>Terapia Cognitivo-Comportamental</li>
                   <li>Psicopatologia</li>
                 </ul>
               </div>
               <div>
-                <h3 className="text-2xl font-black leading-tight text-white">
+                <h3 className="text-xl font-black leading-tight text-white sm:text-2xl">
                   Também atende:
                 </h3>
-                <ul className="mt-4 space-y-3 text-lg leading-7 text-white/84">
+                <ul className="mt-3 space-y-2.5 text-base leading-7 text-white/84 sm:mt-4 sm:space-y-3 sm:text-lg">
                   <li>Adolescentes e adultos</li>
                   <li>Ansiedade e depressão</li>
                   <li>Relacionamentos e conflitos emocionais</li>
@@ -499,7 +507,7 @@ function About() {
 
 function AudienceAndDemands() {
   return (
-    <section id="atendimento" className="bg-[#18384A] py-24 text-white sm:py-32">
+    <section id="atendimento" className="bg-[#18384A] py-20 text-white sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionIntro
           eyebrow="Atendimento"
@@ -507,31 +515,31 @@ function AudienceAndDemands() {
           text="Atendimento psicológico para adolescentes e adultos. A psicoterapia é um espaço seguro para compreender emoções, pensamentos e comportamentos, promovendo mais equilíbrio, autonomia e qualidade de vida."
           light
         />
-        <div className="mt-14 grid gap-5 md:grid-cols-2">
+        <div className="mt-10 grid gap-4 sm:mt-14 md:grid-cols-2 md:gap-5">
           {audience.map((item) => (
             <div
               key={item}
-              className="rounded-[8px] border border-white/12 bg-white/[0.07] p-7 text-lg leading-8 text-white/84 shadow-[0_20px_52px_rgba(0,0,0,0.14)]"
+              className="rounded-[8px] border border-white/12 bg-white/[0.07] p-5 text-base leading-8 text-white/84 shadow-[0_20px_52px_rgba(0,0,0,0.14)] sm:p-7 sm:text-lg"
             >
               <span className="mb-5 block h-px w-16 bg-[#E8B7C7]" />
               {item}
             </div>
           ))}
         </div>
-        <div className="mt-20">
+        <div className="mt-14 sm:mt-20">
           <div className="max-w-4xl">
-            <div className="text-sm font-extrabold uppercase tracking-[0.26em] text-[#E8B7C7]">
+            <div className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#E8B7C7] sm:text-sm sm:tracking-[0.26em]">
               Demandas trabalhadas
             </div>
-            <h2 className="mt-5 text-4xl font-black leading-tight sm:text-5xl lg:text-6xl">
+            <h2 className="mt-4 text-3xl font-black leading-tight sm:mt-5 sm:text-5xl lg:text-6xl">
               Demandas que podem ser trabalhadas em terapia:
             </h2>
           </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-8 grid gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-4 lg:grid-cols-5">
             {demands.map((item) => (
               <div
                 key={item}
-                className="rounded-[8px] border border-white/12 bg-white p-6 text-lg font-black leading-7 text-[#18384A] shadow-[0_24px_60px_rgba(0,0,0,0.18)]"
+                className="rounded-[8px] border border-white/12 bg-white p-5 text-base font-black leading-7 text-[#18384A] shadow-[0_24px_60px_rgba(0,0,0,0.18)] sm:p-6 sm:text-lg"
               >
                 {item}
               </div>
@@ -545,21 +553,21 @@ function AudienceAndDemands() {
 
 function WelcomeMessage() {
   return (
-    <section className="bg-white py-24 sm:py-32">
+    <section className="bg-white py-20 sm:py-32">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <FramedImage
           src="/images/juliane/juliane-retrato-azul.jpg"
           alt="Atendimento psicológico online para adolescentes e adultos"
-          className="h-[540px] rounded-[8px] shadow-[0_30px_80px_rgba(24,56,74,0.18)] lg:h-[680px]"
+          className="h-[430px] rounded-[8px] shadow-[0_30px_80px_rgba(24,56,74,0.18)] sm:h-[540px] lg:h-[680px]"
           objectPosition="50% 45%"
         />
-        <div className="rounded-[8px] border border-[#E8B7C7]/50 bg-[#F7EEE9] p-8 shadow-[0_26px_70px_rgba(24,56,74,0.08)] sm:p-12">
+        <div className="rounded-[8px] border border-[#E8B7C7]/50 bg-[#F7EEE9] p-6 shadow-[0_26px_70px_rgba(24,56,74,0.08)] sm:p-12">
           <SectionIntro
             eyebrow="Mensagem de acolhimento"
             title="Buscar ajuda psicológica é um passo de cuidado com você!"
             align="left"
           />
-          <div className="mt-8 space-y-6 text-xl leading-10 text-[#34404A]/84">
+          <div className="mt-6 space-y-5 text-lg leading-9 text-[#34404A]/84 sm:mt-8 sm:space-y-6 sm:text-xl sm:leading-10">
             <p>
               Nem sempre é fácil lidar sozinho com a ansiedade, o sofrimento
               emocional, os conflitos internos ou os desafios dos
@@ -581,7 +589,7 @@ function PatientArea() {
   return (
     <section
       id="area-do-paciente"
-      className="relative overflow-hidden bg-[#F7EEE9] py-24 sm:py-32"
+      className="relative overflow-hidden bg-[#F7EEE9] py-20 sm:py-32"
     >
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1fr_1fr] lg:px-8">
         <div>
@@ -590,34 +598,34 @@ function PatientArea() {
             title="Um diferencial tecnológico para acompanhar seu processo com segurança."
             align="left"
           />
-          <p className="mt-8 text-xl leading-10 text-[#34404A]/84">
+          <p className="mt-6 text-lg leading-9 text-[#34404A]/84 sm:mt-8 sm:text-xl sm:leading-10">
             Após iniciar o acompanhamento, você terá acesso a uma Área do
             Paciente exclusiva, onde poderá consultar orientações, materiais
             enviados durante o processo terapêutico, acompanhar informações
             importantes e acessar recursos disponibilizados pela psicóloga de
             forma prática, segura e organizada.
           </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
             <CTAButton href={PATIENT_AREA_URL} variant="secondary" wide>
               Acessar Área do Paciente
             </CTAButton>
             <CTAButton wide>Falar com a Juliane agora</CTAButton>
           </div>
         </div>
-        <div className="rounded-[8px] border border-white/85 bg-white p-5 shadow-[0_34px_90px_rgba(24,56,74,0.18)] sm:p-7">
-          <div className="rounded-[8px] bg-[#18384A] p-6 text-white sm:p-8">
-            <div className="flex items-center justify-between border-b border-white/12 pb-6">
+        <div className="rounded-[8px] border border-white/85 bg-white p-4 shadow-[0_34px_90px_rgba(24,56,74,0.18)] sm:p-7">
+          <div className="rounded-[8px] bg-[#18384A] p-5 text-white sm:p-8">
+            <div className="flex flex-col items-start gap-4 border-b border-white/12 pb-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:pb-6">
               <div>
-                <div className="text-sm font-extrabold uppercase tracking-[0.24em] text-[#E8B7C7]">
+                <div className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#E8B7C7] sm:text-sm sm:tracking-[0.24em]">
                   Meu Painel
                 </div>
-                <h3 className="mt-3 text-3xl font-black">Área do Paciente</h3>
+                <h3 className="mt-2 text-2xl font-black sm:mt-3 sm:text-3xl">Área do Paciente</h3>
               </div>
-              <span className="rounded-full bg-[#E8B7C7] px-4 py-2 text-sm font-black text-[#18384A]">
+              <span className="rounded-full bg-[#E8B7C7] px-4 py-2 text-xs font-black text-[#18384A] sm:text-sm">
                 Seguro
               </span>
             </div>
-            <div className="mt-8 grid gap-4">
+            <div className="mt-6 grid gap-3 sm:mt-8 sm:gap-4">
               {[
                 "Orientações da sessão",
                 "Materiais terapêuticos",
@@ -625,15 +633,15 @@ function PatientArea() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-[8px] border border-white/12 bg-white/[0.08] p-5 text-lg font-semibold text-white/86"
+                  className="rounded-[8px] border border-white/12 bg-white/[0.08] p-4 text-base font-semibold text-white/86 sm:p-5 sm:text-lg"
                 >
                   {item}
                 </div>
               ))}
             </div>
-            <div className="mt-8 rounded-[8px] bg-white p-6 text-[#18384A]">
-              <p className="text-2xl font-black">Organização e cuidado</p>
-              <p className="mt-3 text-lg leading-8 text-[#34404A]/78">
+            <div className="mt-6 rounded-[8px] bg-white p-5 text-[#18384A] sm:mt-8 sm:p-6">
+              <p className="text-xl font-black sm:text-2xl">Organização e cuidado</p>
+              <p className="mt-3 text-base leading-8 text-[#34404A]/78 sm:text-lg">
                 Recursos reunidos em um ambiente prático para apoiar o processo
                 terapêutico.
               </p>
@@ -647,22 +655,22 @@ function PatientArea() {
 
 function FinalCTA() {
   return (
-    <section id="contato" className="bg-[#18384A] py-24 text-white sm:py-32">
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+    <section id="contato" className="bg-[#18384A] py-20 text-white sm:py-32">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:gap-14 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
         <FramedImage
           src="/images/juliane/juliane-biblioteca-4.jpg"
           alt="Juliane Duarte Psicóloga em ambiente clínico de estudo e acolhimento"
-          className="h-[560px] rounded-[8px] shadow-[0_34px_90px_rgba(0,0,0,0.24)] lg:h-[680px]"
+          className="h-[430px] rounded-[8px] shadow-[0_34px_90px_rgba(0,0,0,0.24)] sm:h-[560px] lg:h-[680px]"
           objectPosition="50% 42%"
         />
         <div>
-          <div className="text-sm font-extrabold uppercase tracking-[0.26em] text-[#E8B7C7]">
+          <div className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#E8B7C7] sm:text-sm sm:tracking-[0.26em]">
             Contato
           </div>
-          <h2 className="mt-5 text-5xl font-black leading-[1.02] sm:text-6xl lg:text-7xl">
+          <h2 className="mt-4 text-4xl font-black leading-[1.05] sm:mt-5 sm:text-6xl lg:text-7xl">
             Dê o primeiro passo para cuidar da sua saúde emocional.
           </h2>
-          <div className="mt-8 space-y-4 text-xl leading-9 text-white/80">
+          <div className="mt-6 space-y-3 text-lg leading-8 text-white/80 sm:mt-8 sm:space-y-4 sm:text-xl sm:leading-9">
             <p>Entre em contato diretamente comigo:</p>
             <p>
               <span className="font-bold text-white">WhatsApp:</span> (41)
@@ -680,19 +688,19 @@ function FinalCTA() {
               </a>
             </p>
           </div>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-3">
+          <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-14 w-full items-center justify-center gap-2.5 rounded-full bg-white px-6 text-sm font-black text-[#18384A] shadow-[0_18px_34px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#F7EEE9] sm:w-auto sm:px-7 sm:text-base"
+              className="inline-flex h-14 w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-white px-6 text-sm font-black text-[#18384A] shadow-[0_18px_34px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#F7EEE9] sm:w-auto sm:px-7 sm:text-base"
             >
               <WhatsAppIcon className="size-5 text-[#21C063]" />
               Agendar pelo WhatsApp
             </a>
             <a
               href="#quem-sou"
-              className="inline-flex h-14 w-full items-center justify-center rounded-full border border-white/30 bg-white/8 px-6 text-sm font-black text-white transition duration-300 hover:-translate-y-0.5 hover:bg-white/14 sm:w-auto sm:px-7 sm:text-base"
+              className="inline-flex h-14 w-full items-center justify-center whitespace-nowrap rounded-full border border-white/30 bg-white/8 px-6 text-sm font-black text-white transition duration-300 hover:-translate-y-0.5 hover:bg-white/14 sm:w-auto sm:px-7 sm:text-base"
             >
               Rever formação
             </a>
@@ -700,7 +708,7 @@ function FinalCTA() {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-14 w-full items-center justify-center gap-2.5 rounded-full border border-[#E8B7C7]/55 bg-white/5 px-6 text-sm font-black text-white transition duration-300 hover:-translate-y-0.5 hover:border-[#E8B7C7] hover:bg-white/12 sm:w-auto sm:px-7 sm:text-base"
+              className="inline-flex h-14 w-full items-center justify-center gap-2.5 whitespace-nowrap rounded-full border border-[#E8B7C7]/55 bg-white/5 px-6 text-sm font-black text-white transition duration-300 hover:-translate-y-0.5 hover:border-[#E8B7C7] hover:bg-white/12 sm:w-auto sm:px-7 sm:text-base"
             >
               <InstagramIcon className="size-5 text-[#E8B7C7]" />
               Me siga no Instagram
@@ -714,7 +722,7 @@ function FinalCTA() {
 
 function Footer() {
   return (
-    <footer className="bg-[#102d3d] px-4 py-10 text-white sm:px-6 lg:px-8">
+    <footer className="bg-[#102d3d] px-4 py-10 pb-28 text-white sm:px-6 sm:pb-10 lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 text-base text-white/72 md:flex-row md:items-center md:justify-between">
         <div>
           <p className="text-xl font-black text-white">Juliane Duarte</p>
@@ -738,10 +746,10 @@ function FloatingWhatsApp() {
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className="whatsapp-pulse fixed bottom-6 right-5 z-50 inline-flex size-24 items-center justify-center rounded-full bg-white text-[#21C063] shadow-[0_28px_70px_rgba(24,56,74,0.34)] ring-1 ring-[#18384A]/10 transition duration-300 hover:-translate-y-1 hover:scale-105 sm:bottom-8 sm:right-8 sm:h-28 sm:w-32 sm:flex-col sm:gap-1 sm:rounded-[30px]"
+      className="whatsapp-pulse fixed bottom-5 right-4 z-50 inline-flex size-20 items-center justify-center rounded-full bg-white text-[#21C063] shadow-[0_28px_70px_rgba(24,56,74,0.34)] ring-1 ring-[#18384A]/10 transition duration-300 hover:-translate-y-1 hover:scale-105 sm:bottom-8 sm:right-8 sm:h-28 sm:w-32 sm:flex-col sm:gap-1 sm:rounded-[30px]"
       aria-label="Agendar atendimento pelo WhatsApp"
     >
-      <WhatsAppIcon className="size-12 sm:size-11" />
+      <WhatsAppIcon className="size-10 sm:size-11" />
       <span className="hidden text-sm font-black leading-none text-[#18384A] sm:block">
         Agendar
       </span>
