@@ -9,4 +9,5 @@ export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURICo
 
 export const PATIENT_AREA_URL = "#area-do-paciente";
 
-export const INSTAGRAM_URL = "https://www.instagram.com/julianeduartepsico";
+export const INSTAGRAM_URL =
+  "https://www.instagram.com/julianeduarte.psi?igsh=NGtxY3F2NjQ0cm0z&utm_source=qr";

@@ -684,7 +684,7 @@ function FinalCTA() {
                 rel="noopener noreferrer"
                 className="underline decoration-[#E8B7C7]/70 underline-offset-4"
               >
-                @julianeduartepsico
+                @julianeduarte.psi
               </a>
             </p>
           </div>
@@ -731,7 +731,7 @@ function Footer() {
         <div className="flex flex-col gap-2 md:items-end">
           <p>WhatsApp: (41) 98800-2082</p>
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
-            Instagram: @julianeduartepsico
+            Instagram: @julianeduarte.psi
           </a>
           <p>© 2026 Juliane Duarte. Todos os direitos reservados.</p>
         </div>
