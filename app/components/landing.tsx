@@ -734,6 +734,17 @@ function Footer() {
             Instagram: @julianeduarte.psi
           </a>
           <p>© 2026 Juliane Duarte. Todos os direitos reservados.</p>
+          <p className="text-xs text-white/45">
+            Site e SEO Google feito por:{" "}
+            <a
+              href="https://www.oleonardomachado.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-white/25 underline-offset-4 transition hover:text-white/70"
+            >
+              www.oleonardomachado.com.br
+            </a>
+          </p>
         </div>
       </div>
     </footer>
