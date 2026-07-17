@@ -1,0 +1,289 @@
+[1mdiff --git a/leadmaps-collector/.gitignore b/leadmaps-collector/.gitignore[m
+[1mdeleted file mode 100644[m
+[1mindex 4d2ab6d..0000000[m
+[1m--- a/leadmaps-collector/.gitignore[m
+[1m+++ /dev/null[m
+[36m@@ -1,6 +0,0 @@[m
+[31m-__pycache__/[m
+[31m-*.pyc[m
+[31m-.env[m
+[31m-exports/*.xlsx[m
+[31m-logs/*.log[m
+[31m-.venv/[m
+[1mdiff --git a/leadmaps-collector/README.md b/leadmaps-collector/README.md[m
+[1mdeleted file mode 100644[m
+[1mindex 5587e90..0000000[m
+[1m--- a/leadmaps-collector/README.md[m
+[1m+++ /dev/null[m
+[36m@@ -1,47 +0,0 @@[m
+[31m-# LeadMaps Collector[m
+[31m-[m
+[31m-Infraestrutura inicial para o projeto LeadMaps Collector.[m
+[31m-[m
+[31m-Esta etapa prepara a base do coletor com menu interativo, validação de entrada,[m
+[31m-logger profissional, configurações centrais e funções utilitárias. Nenhuma[m
+[31m-lógica de scraping foi implementada neste momento.[m
+[31m-[m
+[31m-## Instalação[m
+[31m-[m
+[31m-Crie e ative um ambiente virtual:[m
+[31m-[m
+[31m-```bash[m
+[31m-python -m venv .venv[m
+[31m-```[m
+[31m-[m
+[31m-Windows:[m
+[31m-[m
+[31m-```bash[m
+[31m-.venv\Scripts\activate[m
+[31m-```[m
+[31m-[m
+[31m-macOS/Linux:[m
+[31m-[m
+[31m-```bash[m
+[31m-source .venv/bin/activate[m
+[31m-```[m
+[31m-[m
+[31m-Instale as dependências:[m
+[31m-[m
+[31m-```bash[m
+[31m-pip install -r requirements.txt[m
+[31m-```[m
+[31m-[m
+[31m-Instale os navegadores do Playwright:[m
+[31m-[m
+[31m-```bash[m
+[31m-playwright install[m
+[31m-```[m
+[31m-[m
+[31m-## Executar[m
+[31m-[m
+[31m-```bash[m
+[31m-python collector.py[m
+[31m-```[m
+[31m-[m
+[31m-O programa solicitará o nicho e a UF, exibirá um resumo e aguardará confirmação.[m
+[1mdiff --git a/leadmaps-collector/collector.py b/leadmaps-collector/collector.py[m
+[1mdeleted file mode 100644[m
+[1mindex 0c10d9e..0000000[m
+[1m--- a/leadmaps-collector/collector.py[m
+[1m+++ /dev/null[m
+[36m@@ -1,24 +0,0 @@[m
+[31m-from src.logger import get_logger[m
+[31m-from src.menu import MenuData, collect_menu_data[m
+[31m-[m
+[31m-[m
+[31m-def main() -> None:[m
+[31m-    logger = get_logger()[m
+[31m-    logger.info("Application started")[m
+[31m-[m
+[31m-    menu_data: MenuData | None = collect_menu_data()[m
+[31m-    if menu_data is None:[m
+[31m-        logger.info("Operation canceled by user")[m
+[31m-        print("Operação cancelada.")[m
+[31m-        return[m
+[31m-[m
+[31m-    logger.info([m
+[31m-        "Collector prepared for niche=%s state=%s",[m
+[31m-        menu_data.niche,[m
+[31m-        menu_data.state,[m
+[31m-    )[m
+[31m-    print("Projeto preparado para receber o motor de raspagem.")[m
+[31m-[m
+[31m-[m
+[31m-if __name__ == "__main__":[m
+[31m-    main()[m
+[1mdiff --git a/leadmaps-collector/requirements.txt b/leadmaps-collector/requirements.txt[m
+[1mdeleted file mode 100644[m
+[1mindex 228f7a9..0000000[m
+[1m--- a/leadmaps-collector/requirements.txt[m
+[1m+++ /dev/null[m
+[36m@@ -1,6 +0,0 @@[m
+[31m-playwright[m
+[31m-pandas[m
+[31m-openpyxl[m
+[31m-tqdm[m
+[31m-colorama[m
+[31m-python-dotenv[m
+[1mdiff --git a/leadmaps-collector/src/config.py b/leadmaps-collector/src/config.py[m
+[1mdeleted file mode 100644[m
+[1mindex 528fad8..0000000[m
+[1m--- a/leadmaps-collector/src/config.py[m
+[1m+++ /dev/null[m
+[36m@@ -1,8 +0,0 @@[m
+[31m-from pathlib import Path[m
+[31m-[m
+[31m-APP_NAME = "LEADMAPS COLLECTOR"[m
+[31m-VERSION = "1.0"[m
+[31m-[m
+[31m-BASE_DIR = Path(__file__).resolve().parent.parent[m
+[31m-EXPORT_FOLDER = BASE_DIR / "exports"[m
+[31m-LOG_FOLDER = BASE_DIR / "logs"[m
+[1mdiff --git a/leadmaps-collector/src/logger.py b/leadmaps-collector/src/logger.py[m
+[1mdeleted file mode 100644[m
+[1mindex 114aab5..0000000[m
+[1m--- a/leadmaps-collector/src/logger.py[m
+[1m+++ /dev/null[m
+[36m@@ -1,29 +0,0 @@[m
+[31m-import logging[m
+[31m-from logging import Logger[m
+[31m-[m
+[31m-from src.config import LOG_FOLDER[m
+[31m-[m
+[31m-LOG_FILE = LOG_FOLDER / "collector.log"[m
+[31m-[m
+[31m-[m
+[31m-def get_logger() -> Logger:[m
+[31m-    LOG_FOLDER.mkdir(parents=True, exist_ok=True)[m
+[31m-[m
+[31m-    logger = logging.getLogger("leadmaps_collector")[m
+[31m-    logger.setLevel(logging.INFO)[m
+[31m-    logger.propagate = False[m
+[31m-[m
+[31m-    if logger.handlers:[m
+[31m-        return logger[m
+[31m-[m
+[31m-    formatter = logging.Formatter([m
+[31m-        fmt="[%(asctime)s] %(levelname)s %(message)s",[m
+[31m-        datefmt="%Y-%m-%d %H:%M:%S",[m
+[31m-    )[m
+[31m-[m
+[31m-    file_handler = logging.FileHandler(LOG_FILE, encoding="utf-8")[m
+[31m-    file_handler.setLevel(logging.INFO)[m
+[31m-    file_handler.setFormatter(formatter)[m
+[31m-[m
+[31m-    logger.addHandler(file_handler)[m
+[31m-    return logger[m
+[1mdiff --git a/leadmaps-collector/src/menu.py b/leadmaps-collector/src/menu.py[m
+[1mdeleted file mode 100644[m
+[1mindex dc1e81c..0000000[m
+[1m--- a/leadmaps-collector/src/menu.py[m
+[1m+++ /dev/null[m
+[36m@@ -1,99 +0,0 @@[m
+[31m-from dataclasses import dataclass[m
+[31m-[m
+[31m-from src.config import APP_NAME, VERSION[m
+[31m-from src.utils import limpar_texto[m
+[31m-[m
+[31m-VALID_STATES = {[m
+[31m-    "AC",[m
+[31m-    "AL",[m
+[31m-    "AP",[m
+[31m-    "AM",[m
+[31m-    "BA",[m
+[31m-    "CE",[m
+[31m-    "DF",[m
+[31m-    "ES",[m
+[31m-    "GO",[m
+[31m-    "MA",[m
+[31m-    "MT",[m
+[31m-    "MS",[m
+[31m-    "MG",[m
+[31m-    "PA",[m
+[31m-    "PB",[m
+[31m-    "PR",[m
+[31m-    "PE",[m
+[31m-    "PI",[m
+[31m-    "RJ",[m
+[31m-    "RN",[m
+[31m-    "RS",[m
+[31m-    "RO",[m
+[31m-    "RR",[m
+[31m-    "SC",[m
+[31m-    "SP",[m
+[31m-    "SE",[m
+[31m-    "TO",[m
+[31m-}[m
+[31m-[m
+[31m-[m
+[31m-@dataclass(frozen=True)[m
+[31m-class MenuData:[m
+[31m-    niche: str[m
+[31m-    state: str[m
+[31m-[m
+[31m-[m
+[31m-def print_header() -> None:[m
+[31m-    separator = "=" * 49[m
+[31m-    print(separator)[m
+[31m-    print(APP_NAME)[m
+[31m-    print(f"Versão {VERSION}")[m
+[31m-    print(separator)[m
+[31m-[m
+[31m-[m
+[31m-def read_required_field(label: str) -> str:[m
+[31m-    while True:[m
+[31m-        print(label)[m
+[31m-        value = limpar_texto(input("> "))[m
+[31m-        if value:[m
+[31m-            return value[m
+[31m-        print("Campo obrigatório. Informe um valor válido.")[m
+[31m-[m
+[31m-[m
+[31m-def read_state() -> str:[m
+[31m-    while True:[m
+[31m-        state = read_required_field("Informe o estado (UF):").upper()[m
+[31m-        if state in VALID_STATES:[m
+[31m-            return state[m
+[31m-        print("UF inválida. Informe uma sigla válida, como SP, PR ou RJ.")[m
+[31m-[m
+[31m-[m
+[31m-def print_summary(menu_data: MenuData) -> None:[m
+[31m-    separator = "=" * 49[m
+[31m-    print(separator)[m
+[31m-    print("Resumo")[m
+[31m-    print(f"Nicho: {menu_data.niche}")[m
+[31m-    print(f"Estado: {menu_data.state}")[m
+[31m-    print(separator)[m
+[31m-[m
+[31m-[m
+[31m-def confirm() -> bool:[m
+[31m-    while True:[m
+[31m-        print("Confirmar?")[m
+[31m-        print("[S] Sim")[m
+[31m-        print("[N] Não")[m
+[31m-        answer = limpar_texto(input("> ")).upper()[m
+[31m-        if answer == "S":[m
+[31m-            return True[m
+[31m-        if answer == "N":[m
+[31m-            return False[m
+[31m-        print("Opção inválida. Informe S ou N.")[m
+[31m-[m
+[31m-[m
+[31m-def collect_menu_data() -> MenuData | None:[m
+[31m-    print_header()[m
+[31m-    niche = read_required_field("Informe o nicho:").upper()[m
+[31m-    state = read_state()[m
+[31m-    menu_data = MenuData(niche=niche, state=state)[m
+[31m-    print_summary(menu_data)[m
+[31m-[m
+[31m-    if confirm():[m
+[31m-        return menu_data[m
+[31m-    return None[m
+[1mdiff --git a/leadmaps-collector/src/utils.py b/leadmaps-collector/src/utils.py[m
+[1mdeleted file mode 100644[m
+[1mindex e590420..0000000[m
+[1m--- a/leadmaps-collector/src/utils.py[m
+[1m+++ /dev/null[m
+[36m@@ -1,22 +0,0 @@[m
+[31m-from datetime import datetime[m
+[31m-import re[m
+[31m-import unicodedata[m
+[31m-[m
+[31m-[m
+[31m-def normalizar_espacos(texto: str) -> str:[m
+[31m-    return " ".join(texto.strip().split())[m
+[31m-[m
+[31m-[m
+[31m-def limpar_texto(texto: str) -> str:[m
+[31m-    texto_sem_controle = "".join([m
+[31m-        char for char in texto if unicodedata.category(char)[0] != "C"[m
+[31m-    )[m
+[31m-    return normalizar_espacos(texto_sem_controle)[m
+[31m-[m
+[31m-[m
+[31m-def normalizar_telefone(telefone: str) -> str:[m
+[31m-    return re.sub(r"\D", "", telefone)[m
+[31m-[m
+[31m-[m
+[31m-def gerar_timestamp() -> str:[m
+[31m-    return datetime.now().strftime("%Y%m%d_%H%M%S")[m
